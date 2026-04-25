@@ -1,6 +1,24 @@
-import { Dumbbell, Instagram, Mail, MessageCircle } from "lucide-react";
+import { Dumbbell, Facebook, Instagram, Mail, MessageCircle } from "lucide-react";
 
 export function Footer() {
+  // TikTok SVG icon (matches the 4x4 size)
+  const TikTokIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4"
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5v4a9 9 0 0 1-4-1.5V16a4 4 0 1 1-4-4z" />
+    </svg>
+  );
+
   return (
     <footer className="relative border-t border-hairline bg-surface/40 py-14">
       <div className="container">
@@ -34,23 +52,28 @@ export function Footer() {
 
           <div className="md:col-span-4">
             <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Connect</div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               {[
                 { icon: MessageCircle, href: "https://wa.me/97336929286", label: "WhatsApp" },
                 { icon: Mail, href: "mailto:Kaleem9286@gmail.com", label: "Email" },
-                { icon: Instagram, href: "#", label: "Instagram" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-ember hover:border-transparent transition-all"
-                >
-                  <s.icon className="w-4 h-4" />
-                </a>
-              ))}
+                { icon: Facebook, href: "https://www.facebook.com/share/1Fp1bthBpH/", label: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/krk_087?utm_source=qr&igsh=bnRmZTBjZDcxZnpo", label: "Instagram" },
+                { icon: TikTokIcon, href: "https://www.tiktok.com/@kaleemrkhan87?_r=1&_t=ZS-95q31RS6UJJ", label: "TikTok" },
+              ].map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-ember hover:border-transparent transition-all"
+                  >
+                    {typeof Icon === "function" && Icon.name === "TikTokIcon" ? <Icon /> : <Icon className="w-4 h-4" />}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
