@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 
 const contacts = [
-  { icon: MapPin, label: "Studio", value: "Manama, Bahrain", href: "#" },
+  { icon: MapPin, label: "Studio", value: "Manama, Bahrain", href: "https://maps.app.goo.gl/ex2Mvg7cmhP2wmTo7" },
   { icon: Mail, label: "Email", value: "Kaleem9286@gmail.com", href: "mailto:Kaleem9286@gmail.com" },
   { icon: Phone, label: "WhatsApp", value: "+973 3692 9286", href: "https://wa.me/97336929286" },
 ];
