@@ -8,7 +8,7 @@ const testimonials = [
   { name: "Ahmed K.", role: "Gained 9 kg lean mass", quote: "I'd been stuck for years. The programming, the check-ins, the mindset work — everything connected. Best coaching investment of my life." },
   { name: "Layla M.", role: "Marathon finisher", quote: "Beyond fitness, Kaleem helped me build daily habits that improved my sleep, mood, and energy. He genuinely cares about your progress." },
   { name: "Hassan R.", role: "Postnatal strength rebuild", quote: "Patient, knowledgeable, and brutally honest in the best way. I trust his guidance completely. Worth every dinar." },
-  { name: "Noor F.", role: "Body recomp client", quote: "The nutrition plan finally fit my actual life. Six months in I look and feel like a different person. I cannot recommend Iron Forge enough." },
+  { name: "Noor F.", role: "Body recomp client", quote: "The nutrition plan finally fit my actual life. Six months in I look and feel like a different person. I cannot recommend Fitness Link enough." },
 ];
 
 export function Testimonials() {

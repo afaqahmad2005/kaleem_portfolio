@@ -1,3 +1,4 @@
+// Services.tsx - Option 1: Lift + Glow + Scale
 import { Dumbbell, Salad, HeartPulse, Activity, Brain, Trophy, ArrowUpRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -19,7 +20,6 @@ export function Services() {
           title={<>Focused support for <span className="text-ember">training, nutrition,</span> and total wellbeing.</>}
           desc="Every service strengthens a different part of the same goal: feeling healthier, stronger, and more in control of your routine."
         />
-
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline rounded-3xl overflow-hidden border border-hairline">
           {services.map((s, i) => (
             <ServiceCard key={s.title} {...s} index={i} />
@@ -30,23 +30,10 @@ export function Services() {
   );
 }
 
-function SectionHeader({
-  eyebrow,
-  title,
-  desc,
-  align = "left",
-}: {
-  eyebrow: string;
-  title: React.ReactNode;
-  desc?: string;
-  align?: "left" | "center";
-}) {
-  const { ref, inView } = useReveal<HTMLDivElement>();
+function SectionHeader({ eyebrow, title, desc, align = "left" }) {
+  const { ref, inView } = useReveal();
   return (
-    <div
-      ref={ref}
-      className={`reveal ${inView ? "in-view" : ""} ${align === "center" ? "text-center mx-auto" : ""} max-w-3xl`}
-    >
+    <div ref={ref} className={`reveal ${inView ? "in-view" : ""} ${align === "center" ? "text-center mx-auto" : ""} max-w-3xl`}>
       <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary mb-5">
         <span className="w-8 h-px bg-primary" />
         {eyebrow}
@@ -59,42 +46,24 @@ function SectionHeader({
   );
 }
 
-function ServiceCard({
-  icon: Icon,
-  title,
-  desc,
-  tag,
-  index,
-}: {
-  icon: typeof Dumbbell;
-  title: string;
-  desc: string;
-  tag: string;
-  index: number;
-}) {
-  const { ref, inView } = useReveal<HTMLDivElement>();
+function ServiceCard({ icon: Icon, title, desc, tag, index }) {
+  const { ref, inView } = useReveal();
   return (
     <div
       ref={ref}
-      className={`reveal ${inView ? "in-view" : ""} group relative bg-surface p-8 lg:p-10 transition-all duration-500 hover:bg-surface-elevated cursor-pointer overflow-hidden`}
+      className={`reveal ${inView ? "in-view" : ""} group relative bg-surface p-8 lg:p-10 transition-all duration-300 ease-out cursor-pointer overflow-hidden rounded-2xl border border-transparent hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl hover:shadow-ember/25 hover:border-ember/40`}
       style={{ transitionDelay: `${index * 60}ms` }}
     >
-      {/* Hover ember glow */}
-      <div className="absolute -inset-px bg-ember opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-2xl" />
-
       <div className="flex justify-between items-start mb-12">
-        <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-ember group-hover:border-transparent group-hover:scale-110 transition-all duration-500">
-          <Icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" strokeWidth={1.75} />
+        <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-ember group-hover:border-ember group-hover:scale-110 transition-all duration-300">
+          <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" strokeWidth={1.75} />
         </div>
-        <span className="text-xs font-display tracking-widest text-muted-foreground">{tag}</span>
+        <span className="text-xs font-display tracking-widest text-muted-foreground group-hover:text-ember transition-colors duration-300">{tag}</span>
       </div>
-
-      <h3 className="font-display text-2xl font-semibold mb-3">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{desc}</p>
-
-      <div className="mt-8 flex items-center text-sm text-primary opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-500">
-        Learn more
-        <ArrowUpRight className="w-4 h-4 ml-1" />
+      <h3 className="font-display text-2xl font-semibold mb-3 group-hover:text-ember transition-colors duration-300">{title}</h3>
+      <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{desc}</p>
+      <div className="mt-8 flex items-center text-sm font-medium text-ember transition-all duration-300 group-hover:translate-x-2">
+        Learn more <ArrowUpRight className="w-4 h-4 ml-1 transition-all duration-300 group-hover:translate-x-1" />
       </div>
     </div>
   );

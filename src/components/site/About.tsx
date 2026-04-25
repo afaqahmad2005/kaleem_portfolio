@@ -22,7 +22,7 @@ export function About() {
               <div className="relative rounded-3xl overflow-hidden border border-hairline shadow-deep">
                 <img
                   src={about}
-                  alt="Kaleem ur Rahman, founder of Iron Forge Coaching"
+                  alt="Kaleem ur Rahman, founder of Fitness Link Coaching"
                   width={1200}
                   height={1550}
                   loading="lazy"
@@ -58,7 +58,7 @@ export function About() {
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Iron Forge is a refined coaching practice — not a loud gym brand. Built for people who want
+              Fitness Link is a refined coaching practice — not a loud gym brand. Built for people who want
               guidance they can actually follow: thoughtful training, intelligent food choices, and wellness
               habits that support day-to-day performance.
             </p>

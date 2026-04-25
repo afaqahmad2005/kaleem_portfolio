@@ -16,7 +16,7 @@ const tiers = [
     name: "Signature",
     price: "BHD 48",
     period: "/ 6 sessions",
-    desc: "The full Iron Forge experience — most popular for transformation clients.",
+    desc: "The full Fitness Link experience — most popular for transformation clients.",
     features: ["Everything in Starter", "Custom macro & meal plan", "2× weekly 1:1 calls", "24/7 WhatsApp support", "Habit & wellness coaching", "Monthly progress audit"],
     cta: "Start Signature",
     featured: true,

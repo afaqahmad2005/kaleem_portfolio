@@ -56,7 +56,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-hairline flex flex-col md:flex-row justify-between gap-3 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Iron Forge Coaching. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Fitness Link Coaching. All rights reserved.</div>
           <div>Designed and forged in Manama, Bahrain.</div>
         </div>
       </div>
