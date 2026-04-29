@@ -1,4 +1,5 @@
-import { Dumbbell, Facebook, Instagram, Mail, MessageCircle } from "lucide-react";
+import { Dumbbell, Facebook, Instagram, Linkedin, Mail, MessageCircle, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   // TikTok SVG icon (matches the 4x4 size)
@@ -54,11 +55,13 @@ export function Footer() {
             <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Connect</div>
             <div className="flex items-center gap-3 flex-wrap">
               {[
-                { icon: MessageCircle, href: "https://wa.me/97336929286", label: "WhatsApp" },
-                { icon: Mail, href: "mailto:Kaleem9286@gmail.com", label: "Email" },
+                // { icon: MessageCircle, href: "https://wa.me/97336929286", label: "WhatsApp" },
+                // { icon: Mail, href: "mailto:Kaleem9286@gmail.com", label: "Email" },
                 { icon: Facebook, href: "https://www.facebook.com/share/1Fp1bthBpH/", label: "Facebook" },
                 { icon: Instagram, href: "https://www.instagram.com/krk_087?utm_source=qr&igsh=bnRmZTBjZDcxZnpo", label: "Instagram" },
                 { icon: TikTokIcon, href: "https://www.tiktok.com/@kaleemrkhan87?_r=1&_t=ZS-95q31RS6UJJ", label: "TikTok" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/kaleem-ur-rahman-20041b253", label: "LinkedIn" },
+                { icon: Youtube, href: "https://www.youtube.com/@YOUR_CHANNEL_HERE", label: "YouTube" } // ← Replace with actual URL
               ].map((s) => {
                 const Icon = s.icon;
                 return (
@@ -68,6 +71,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
+                    title={s.label}  // 👈 Adds native browser tooltip on hover
                     className="w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-ember hover:border-transparent transition-all"
                   >
                     {typeof Icon === "function" && Icon.name === "TikTokIcon" ? <Icon /> : <Icon className="w-4 h-4" />}
