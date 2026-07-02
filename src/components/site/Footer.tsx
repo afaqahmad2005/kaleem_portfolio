@@ -30,7 +30,7 @@ export function Footer() {
                 <Dumbbell className="w-4.5 h-4.5 text-primary-foreground" strokeWidth={2.5} />
               </div>
               <div className="leading-none">
-                <div className="font-display font-bold text-lg">FITNESS<span className="text-ember">.</span>LINK</div>
+                <div className="font-display font-bold text-lg">KALEEM FITNESS LINK</div>
                 <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Coaching by Kaleem</div>
               </div>
             </a>

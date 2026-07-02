@@ -41,7 +41,7 @@ export function Navbar() {
               </div>
             </div>
             <div className="leading-none">
-              <div className="font-display font-bold tracking-tight text-lg">FITNESS<span className="text-ember">.</span>LINK</div>
+              <div className="font-display font-bold tracking-tight text-lg">KALEEM FITNESS LINK</div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Coaching by Kaleem</div>
             </div>
           </a>
@@ -61,7 +61,7 @@ export function Navbar() {
 
           <div className="hidden lg:flex">
             <Button asChild variant="ember" size="sm" className="rounded-full px-5">
-             <a href="https://calendly.com/kaleemfitnesslink/30min?back=1" target="_blank" rel="noopener noreferrer">
+             <a href="https://calendly.com/kaleemfitnesslink/15min?back=1" target="_blank" rel="noopener noreferrer">
       Book Your Session
     </a>
             </Button>
