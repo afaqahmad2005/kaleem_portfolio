@@ -2,12 +2,14 @@ import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 
-const contacts = [
-  { icon: MapPin, label: "Studio", value: "Manama, Bahrain", href: "https://maps.app.goo.gl/ex2Mvg7cmhP2wmTo7" },
-  { icon: Mail, label: "Email", value: "Kaleem9286@gmail.com", href: "mailto:Kaleem9286@gmail.com" },
-  { icon: Phone, label: "WhatsApp", value: "+973 3692 9286", href: "https://wa.me/97336929286" },
-];
-
+const contacts = {
+  studio: { icon: MapPin, label: "Studio", value: "Manama, Bahrain", href: "https://maps.app.goo.gl/ex2Mvg7cmhP2wmTo7" },
+  emails: [
+    { icon: Mail, label: "Email", value: "Kaleem9286@gmail.com", href: "mailto:Kaleem9286@gmail.com" },
+    { icon: Mail, label: "Email", value: "Kaleemfitnesslink@gmail.com", href: "mailto:Kaleemfitnesslink@gmail.com" }
+  ],
+  whatsapp: { icon: Phone, label: "WhatsApp", value: "+973 3692 9286", href: "https://wa.me/97336929286" }
+};
 export function Contact() {
   const { ref, inView } = useReveal<HTMLDivElement>();
   return (
@@ -45,24 +47,64 @@ export function Contact() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-4 mt-20 max-w-5xl mx-auto">
-          {contacts.map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              target={c.href.startsWith("http") ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              className="group glass rounded-3xl p-7 hover:border-primary/50 transition-all duration-500 hover:-translate-y-1"
-            >
-              <div className="flex items-start justify-between mb-5">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-ember group-hover:border-transparent transition-all duration-500">
-                  <c.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground" strokeWidth={1.75} />
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:rotate-45 transition-all duration-500" />
-              </div>
-              <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1.5">{c.label}</div>
-              <div className="font-display text-lg font-medium">{c.value}</div>
-            </a>
-          ))}
+{contacts && Object.values(contacts).map((c, index) => {
+  // Check if this contact item is the array of emails
+  const isEmailArray = Array.isArray(c);
+  
+  // Get the base details from either the single object or the first item of the email array
+  const itemData = isEmailArray ? c[0] : c;
+
+  return (
+    <div
+      key={`${itemData.label}-${index}`}
+      className="group glass rounded-3xl p-6 hover:border-primary/50 transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between"
+    >
+      <div>
+        <div className="flex items-start justify-between mb-5">
+          <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-ember group-hover:border-transparent transition-all duration-500">
+            <itemData.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground" strokeWidth={1.75} />
+          </div>
+          {/* Hide individual arrow if it's multiple emails since we have multiple links inside */}
+          {!isEmailArray && (
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:rotate-45 transition-all duration-500" />
+          )}
+        </div>
+        
+        <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1.5">
+          {itemData.label}
+        </div>
+      </div>
+
+      <div className="font-display text-lg font-medium mt-auto">
+        {isEmailArray ? (
+          // 💡 Renders both emails stacked inside this single card
+          <div className="flex flex-col gap-2">
+            {c.map((emailItem, emailIdx) => (
+              <a
+                key={emailIdx}
+                href={emailItem.href}
+                className="hover:text-primary transition-colors duration-300 break-all flex items-center gap-1 group/link"
+              >
+                {emailItem.value}
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 transition-opacity text-primary inline" />
+              </a>
+            ))}
+          </div>
+        ) : (
+          // Standard single link text (Studio / WhatsApp)
+          <a
+            href={itemData.href}
+            target={itemData.href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            className="block break-all"
+          >
+            {itemData.value}
+          </a>
+        )}
+      </div>
+    </div>
+  );
+})}
         </div>
       </div>
     </section>

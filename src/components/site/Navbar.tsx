@@ -61,7 +61,9 @@ export function Navbar() {
 
           <div className="hidden lg:flex">
             <Button asChild variant="ember" size="sm" className="rounded-full px-5">
-              <a href="https://wa.me/97336929286" target="_blank" rel="noopener noreferrer">Start on WhatsApp</a>
+             <a href="https://calendly.com/kaleemfitnesslink/30min?back=1" target="_blank" rel="noopener noreferrer">
+      Book Your Session
+    </a>
             </Button>
           </div>
 
